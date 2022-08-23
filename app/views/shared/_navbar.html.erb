@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <%= link_to "Scheduled Tweets" , root_path, class: "navbar-brand" %>
 
@@ -11,6 +11,16 @@
         <li class="nav-item">
           <%= link_to "About", about_path, class: "nav-link" %>
         </li>
+      </ul>
+
+      <ul class="navbar-nav my-2 my-lg-0 d-flex align-items-center">
+        <% if @user && @user.email %>
+          <b-avatar class="text-light" size="4em"><%= @user.email %></b-avatar>
+          <%= button_to "logout", logout_path, method: :delete, class: "btn btn-danger mx-md-4" %>
+        <% else %>
+          <a class="link-light mx-sm-2" href="/login" >Login</a>
+          <a class="link-light mx-sm-2" href="/sign_up" >Signup</a>
+        <% end %>
       </ul>
     </div>
   </div>
